@@ -1,29 +1,18 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from "react";
+import { Link } from "gatsby";
+import "./navbar.css";
 
 export default function Navbar() {
   return (
-    <nav style={{paddingBottom: "2rem"}}>
+    <nav style={{ paddingBottom: "2rem" }}>
       <h1>Menu</h1>
       <div className="links">
-        <Link to="/" style={{ padding: "1rem" }}>
-          Home
-        </Link>
-        <Link to="instructions" style={{ padding: "1rem" }}>
-          Instructions
-        </Link>
-        <Link to="/trajectories" style={{ padding: "1rem" }}>
-          Trajectories
-        </Link>
-        <Link to="/intersections" style={{ padding: "1rem" }}>
-          Intersections
-        </Link>
-        <Link to="/search" style={{ padding: "1rem" }}>
-          Search
-        </Link>
-        <Link to="/credits" style={{ padding: "1rem" }}>
-          Credits
-        </Link>
+        <Link to="/">Home</Link>
+        <Link to="/instructions">Instructions</Link>
+        <Link to="/trajectories">Trajectories</Link>
+        <Link to="/intersections">Intersections</Link>
+        <Link to="/search">Search</Link>
+        <Link to="/credits">Credits</Link>
       </div>
     </nav>
   );
