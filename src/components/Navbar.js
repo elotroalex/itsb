@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 
 export default function Navbar() {
   return (
-    <nav>
+    <nav style={{paddingBottom: "2rem"}}>
       <h1>Menu</h1>
       <div className="links">
         <Link to="/" style={{ padding: "1rem" }}>
