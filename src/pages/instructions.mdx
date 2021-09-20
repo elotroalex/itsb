@@ -1,6 +1,6 @@
 import Layout from "../components/layout";
-import Image from "../components/image";
 import SEO from "../components/seo";
+import howTo1 from "../images/howto1.gif";
 
 <SEO title="Home" keywords={["gatsby", "application", "react"]} />
 
@@ -18,11 +18,7 @@ This visualization presents an interactive narrative overview of one or more ind
   2. Select one or more authors on the "Select Authors" column. Once selected,
   you can deselect an author by clicking on their name again.
 </p>
-<img
-  src="/assets/img/howto1.gif"
-  width="100%"
-  alt="Demonstration of how to use trajectories"
-/>
+<img src={howTo1} alt="Description of trajectories" />
 <p>
   3. Once the map has been drawn, you can select any dot on the map to read a
   pop-up note about that particular moment in time for that particular author.
