@@ -5,7 +5,6 @@ import "./navbar.css";
 export default function Navbar() {
   return (
     <nav style={{ paddingBottom: "2rem" }}>
-      <h1>Menu</h1>
       <div className="links">
         <Link to="/">Home</Link>
         <Link to="/instructions">Instructions</Link>

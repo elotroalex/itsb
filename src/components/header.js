@@ -1,42 +1,67 @@
-import { Link } from 'gatsby'
-import PropTypes from 'prop-types'
-import React from 'react'
+import { Link } from "gatsby";
+import PropTypes from "prop-types";
+import React from "react";
+import itsbIcon from "../images/itsb_icon.svg";
 
 const Header = ({ siteTitle }) => (
   <div
     style={{
-      background: 'rebeccapurple',
-      marginBottom: '1.45rem',
+      background: "#fcb040",
+      marginBottom: "1.45rem",
+      display: "flex",
+      width: "300px",
+      height: "70px",
     }}
   >
     <div
       style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        padding: '1.45rem 1.0875rem',
+        margin: "0 auto",
+        maxWidth: 300,
+        padding: "1rem",
       }}
     >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
+      <Link
+        to="/"
+        style={{
+          color: "black",
+          textDecoration: "none",
+          fontSize: "1rem",
+          display: "flex",
+        }}
+      >
+        <figure
           style={{
-            color: 'white',
-            textDecoration: 'none',
+            display: "flex",
+            marginBottom: 0,
+          }}
+        >
+          <img
+            src={itsbIcon}
+            alt="ITSB Icon: A concentric circle."
+            style={{
+              width: "1rem",
+            }}
+          />
+        </figure>
+        <span
+          style={{
+            margin: 0,
+            textTransform: "uppercase",
           }}
         >
           {siteTitle}
-        </Link>
-      </h1>
+        </span>
+      </Link>
     </div>
   </div>
-)
+);
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
-}
+};
 
 Header.defaultProps = {
-  siteTitle: '',
-}
+  siteTitle: "",
+};
 
-export default Header
+export default Header;
