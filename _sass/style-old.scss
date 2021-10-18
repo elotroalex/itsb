@@ -1,14 +1,13 @@
 /* Primary styles for In The Same Boats
  * SASS file outputs to assets/css/style.css  */
- 
- 
+
 // !FUNCTIONS
 
 // Converts HSB colours to native HSL(A) colours
 
 @function hsb($h-hsb, $s-hsb, $b-hsb, $a: 1) {
   @if $b-hsb == 0 {
-    @return hsla(0, 0, 0, $a)
+    @return hsla(0, 0, 0, $a);
   } @else {
     $l-hsl: ($b-hsb/2) * (2 - ($s-hsb/100));
     $s-hsl: ($b-hsb * $s-hsb) / if($l-hsl < 50, $l-hsl * 2, 200 - $l-hsl * 2);
@@ -26,33 +25,41 @@ $min-width: 1250px;
 
 $bp_mobile: 640px;
 
-
 // CONFIG: COLOUR
 
-$clr1: hsb(35.74, 74.6, 98.82);  // Sunrise Orange  | #FCB040
-$clr2: hsb(226.67, 74.6, 98.82); // Bright Azure    | #406AFC 
-$clr3: hsb(210, 13.73, 40);      // Storm Grey      | #585F66
+$clr1: hsb(35.74, 74.6, 98.82); // Sunrise Orange  | #FCB040
+$clr2: hsb(226.67, 74.6, 98.82); // Bright Azure    | #406AFC
+$clr3: hsb(210, 13.73, 40); // Storm Grey      | #585F66
 
-$black: #000000;  // Black
-$white: #F7F8F9; // Practically White
+$black: #000000; // Black
+$white: #f7f8f9; // Practically White
 
 // Secondary colours for visualizations
 
 $colour_index: (
-  0: $clr1,                     // Sunrise Orange
-  1: $clr2,                     // Bright Azure
-  2: hsb(319.8, 89.57, 45.1),   // Plum          | #730C51
-  3: hsb(272, 60, 58.82),       // Violet        | #6C3C96
-  4: hsb(37.6, 68, 98.82),      // Spring Green  | #59FC89
-  5: hsb(45.5, 84.51, 88.63),   // Amaranth      | #E22351
-  6: hsb(182.6, 100, 88.63),    // Turquoise     | #00D8E2
-  7: hsb(112, 47.15, 75.69),    // Mantis Green  | #72C166
-  8: hsb(48.12, 79.52, 99.61),  // Bumblebee     | #FED634
-  9: hsb(18.42, 79.53, 99.51),  // Bright Autumn | #FE7234
+  0: $clr1,
+  // Sunrise Orange
+  1: $clr2,
+  // Bright Azure
+  2: hsb(319.8, 89.57, 45.1),
+  // Plum          | #730C51
+  3: hsb(272, 60, 58.82),
+  // Violet        | #6C3C96
+  4: hsb(37.6, 68, 98.82),
+  // Spring Green  | #59FC89
+  5: hsb(45.5, 84.51, 88.63),
+  // Amaranth      | #E22351
+  6: hsb(182.6, 100, 88.63),
+  // Turquoise     | #00D8E2
+  7: hsb(112, 47.15, 75.69),
+  // Mantis Green  | #72C166
+  8: hsb(48.12, 79.52, 99.61),
+  // Bumblebee     | #FED634
+  9: hsb(18.42, 79.53, 99.51),
+  // Bright Autumn | #FE7234
 );
 
-
-// Extract the brightness value from each colour. 
+// Extract the brightness value from each colour.
 // Colours brighter than 50% will graduate lighter (tint) while
 // colours lighter than 50% will graduate darker (shade).
 
@@ -66,50 +73,58 @@ $si_brightness: (
   6: 88.63,
   7: 75.69,
   8: 99.61,
-  9: 99.51
+  9: 99.51,
 );
 
-$clr_map: (
-  
-);
+$clr_map: ();
 
-@each $key,$colour in $colour_index {
+@each $key, $colour in $colour_index {
   @for $i from 0 through 4 {
-      $index: $key + (10 * $i);
-      
+    $index: $key + (10 * $i);
+
     // Colour shift index colour from 0-40%
-        
+
     $colour_shift: 10 * $i;
-    
-    @if map-get($si_brightness,$key) > 50 {
-      $clr_map: map-merge($clr_map,($index: mix($black,$colour,$colour_shift))); // shade
+
+    @if map-get($si_brightness, $key) > 50 {
+      $clr_map: map-merge(
+        $clr_map,
+        (
+          $index: mix($black, $colour, $colour_shift),
+        )
+      ); // shade
     } @else {
-      $clr_map: map-merge($clr_map,($index: mix($white,$colour,$colour_shift))); // tint
-    }      
+      $clr_map: map-merge(
+        $clr_map,
+        (
+          $index: mix($white, $colour, $colour_shift),
+        )
+      ); // tint
+    }
   }
 }
 
 // Key Neutrals
 
-$black: #000000;              // Black
-$white: #FFFFFF;              // Practically White
-$darkest_neutral: $clr3;      // Storm Grey
-$darker_neutral: #6A727C;     // Storm Grey 80%
-$dark_neutral: #A5ACAF;       // Storm Grey 50%
-$neutral: lighten($clr3,40%);
-$light_neutral: #E6E7E9;      // Storm Grey 30%
-$lighter_neutral: #F0F1F2;    // Storm Grey 10%
-$lightest_neutral: #F7F8F9;   // Practically White
+$black: #000000; // Black
+$white: #ffffff; // Practically White
+$darkest_neutral: $clr3; // Storm Grey
+$darker_neutral: #6a727c; // Storm Grey 80%
+$dark_neutral: #a5acaf; // Storm Grey 50%
+$neutral: lighten($clr3, 40%);
+$light_neutral: #e6e7e9; // Storm Grey 30%
+$lighter_neutral: #f0f1f2; // Storm Grey 10%
+$lightest_neutral: #f7f8f9; // Practically White
 
 // CONFIG: TYPESETTING
 
-$basefont: "Proxima Nova", "proxima-nova-soft", "Montserrat", "Arial", sans-serif;
+$basefont: "Proxima Nova", "proxima-nova-soft", "Montserrat", "Arial",
+  sans-serif;
 
 $light: 300;
 $regular: 400;
 $semibold: 600;
 $bold: 700;
-
 
 // !STYLES
 
@@ -125,7 +140,9 @@ body {
   padding: 0;
   min-width: $min-width;
   position: inherit;
-  
+  display: flex;
+  flex-direction: row;
+
   &.visualization {
     overflow: hidden;
   }
@@ -137,11 +154,14 @@ body > div {
   height: 100%;
 }
 
-div, a {
+div,
+a {
   box-sizing: border-box;
 }
 
-a, a:link, a:visited {
+a,
+a:link,
+a:visited {
   color: $black;
   text-decoration: none;
 
@@ -153,7 +173,6 @@ a, a:link, a:visited {
 figure {
   margin: 0;
 }
-
 
 // Navigation
 
@@ -169,11 +188,11 @@ body.front #nav {
   top: 0;
   left: 0;
   z-index: 10;
-  border-right: solid 1px $white;  
+  border-right: solid 1px $white;
   overflow: hidden;
   transition: width 0.5s;
   transition-delay: 0.5s;
-  
+
   &:hover {
     width: 300px;
   }
@@ -189,27 +208,27 @@ body.front #nav {
   align-items: center;
   flex-wrap: nowrap;
   border-bottom: solid 1px $black; // fixes visual height disaprity with header block on visualizations
-  
+
   figure {
     width: 75px;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
     img {
       display: inline-block;
       width: 40px;
     }
   }
-    
+
   span {
     display: block;
     color: $black;
     font-size: 1.2em;
     font-weight: $semibold;
     text-transform: uppercase;
-    width: 200px
+    width: 200px;
   }
 }
 
@@ -217,8 +236,10 @@ body.front #nav {
   width: 300px;
   letter-spacing: 0.1em;
   padding: 25px;
-  
-  a, a:link, a:visited {
+
+  a,
+  a:link,
+  a:visited {
     color: $white;
   }
 
@@ -234,12 +255,13 @@ body.front #nav {
     align-items: center;
     margin-bottom: 50px;
 
-    &:hover, &.active {
+    &:hover,
+    &.active {
       text-decoration: none;
       color: $clr1;
     }
   }
-  
+
   img {
     width: 25px;
     margin-right: 25px;
@@ -267,8 +289,8 @@ body.front #nav {
   #contents {
     margin-left: 75px;
     width: unset;
-	> #panels {
-	  overflow: hidden;
+    > #panels {
+      overflow: hidden;
     }
   }
 }
@@ -286,7 +308,7 @@ body.front #nav {
     margin: 1.25em auto 0em;
     font-weight: normal;
   }
-}  
+}
 #page {
   display: flex;
   flex-direction: row;
@@ -299,7 +321,8 @@ body.front #nav {
   &.has-sidebar {
     width: 55%;
   }
-  h1,h2 {
+  h1,
+  h2 {
     color: $black;
   }
   a {
@@ -334,7 +357,7 @@ body.front #nav {
 .item_icon {
   float: left;
   width: 20%;
-  
+
   img {
     width: 40px;
   }
@@ -361,15 +384,16 @@ span.subject {
   width: 62.5%;
   margin: 0 auto;
   padding-top: $blh;
-  
-  h1, h2 {
+
+  h1,
+  h2 {
     color: $darker_neutral;
   }
-  
+
   a {
     text-decoration: underline;
   }
-  
+
   p {
     font-size: 1.2em;
     line-height: 1.5em;
@@ -404,7 +428,6 @@ span.subject {
 }
 
 /* !VISUALIZATION PANEL STRUCTURE */
-
 
 // Intersections
 
@@ -462,38 +485,36 @@ span.subject {
   }
 }
 
-
 // Itineraries
 
-#itineraries
- > * {
+#itineraries > * {
   position: absolute;
   top: 0;
   height: auto;
-  
+
   &:nth-child(1) {
     width: 25%;
     min-height: 100%;
     left: 0;
-    
+
     .header {
       background-color: $darker_neutral;
     }
   }
-  
+
   &:nth-child(2) {
     width: 75%;
     left: 25%;
-  } 
-  
+  }
+
   .selections {
     width: 100%;
   }
-  
+
   .itinerary {
     width: 100%;
     height: auto;
-    
+
     .itinerary-header {
       width: 100%;
       text-align: center;
@@ -501,16 +522,15 @@ span.subject {
       text-transform: uppercase;
       color: $clr2;
       font-weight: $semibold;
-
     }
-    
+
     .itinerary-view {
       text-align: center;
       padding-top: $blh;
       height: auto;
       width: 100%;
     }
-    
+
     svg {
       width: 60px;
       display: inline-block;
@@ -519,7 +539,6 @@ span.subject {
       overflow: visible;
     }
   }
-       
 }
 
 /* Routes */
@@ -527,21 +546,20 @@ span.subject {
 // Colourization
 
 @for $i from 0 through 50 {
-  
   $color: #{map-get($clr_map, $i)};
-  
+
   .id_#{$i} {
     fill: $color;
     color: $color;
-  
-    
-    path, path.id_#{$i}, line.id_#{$i} {
+
+    path,
+    path.id_#{$i},
+    line.id_#{$i} {
       fill: none;
       stroke: $color;
     }
   }
 }
-
 
 ._02 .control {
   z-index: 1;
@@ -549,15 +567,12 @@ span.subject {
   background: rgba(255, 255, 255, 0.9);
 }
 
-
-
 #itinerary-axis {
-  
   text {
     fill: $darker_neutral;
     font-size: 11px;
   }
-  
+
   line {
     stroke: $darker_neutral;
   }
@@ -607,7 +622,9 @@ path.line {
   color: $clr2;
 }
 
-.author_left path, path.author_left, line.author_left {
+.author_left path,
+path.author_left,
+line.author_left {
   fill: none;
   stroke: $clr2;
 }
@@ -617,14 +634,16 @@ path.line {
   color: $clr3;
 }
 
-.author_right path, path.author_right, line.author_right {
+.author_right path,
+path.author_right,
+line.author_right {
   fill: none;
   stroke: $clr3;
 }
 
-@mixin author-list-item($size: 'small-set') {
+@mixin author-list-item($size: "small-set") {
   color: $clr2;
-  @if $size == 'large-set' {
+  @if $size == "large-set" {
     font-size: 0.85em;
     padding-bottom: $blh/2;
   } @else {
@@ -644,7 +663,7 @@ path.line {
 
 .authors {
   background-color: $lighter_neutral;
-  
+
   .header {
     background-color: $darkest_neutral;
   }
@@ -655,45 +674,40 @@ path.line {
     display: table-row;
     width: 100%;
   }
-  
+
   &.small-set a {
     @include author-list-item();
     color: $darker_neutral;
-
   }
-  
+
   &.large-set a {
-    @include author-list-item('large-set');
+    @include author-list-item("large-set");
     color: $darker_neutral;
   }
-  
+
   a {
     width: 50%;
     display: table-cell;
     vertical-align: top;
     padding: $blh;
     cursor: pointer;
-    padding-bottom: $blh/16
+    padding-bottom: $blh/16;
   }
 }
-
 
 // Trajectories author
 
 #trajectories {
-  
   @for $i from 1 through 50 {
-    
     .a-#{$i} {
-      &:hover, &.selected {
+      &:hover,
+      &.selected {
         $clrindex: $i - 1;
         $color: #{map-get($clr_map, $clrindex)};
         color: $color;
       }
-    
     }
   }
-    
 }
 
 // Itineraries author
@@ -705,14 +719,12 @@ path.line {
   }
 }
 
-
 #itineraries svg {
   shape-rendering: geometricPrecision;
   cursor: pointer;
   display: block;
   width: 100%;
 }
-
 
 .results {
   .items {
@@ -726,14 +738,14 @@ path.line {
     padding-bottom: $blh / 2;
     margin-bottom: $blh / 2;
   }
-  
+
   .results-view {
     &.small-set > div {
       @include author-list-item();
     }
-  
+
     &.large-set > div {
-      @include author-list-item('large-set');
+      @include author-list-item("large-set");
     }
   }
 
@@ -757,7 +769,7 @@ path.line {
   text-align: center;
   padding: 0.9em;
   font-size: 0.8em;
-  text-transform: uppercase
+  text-transform: uppercase;
 }
 
 .d3-slider {
@@ -775,7 +787,6 @@ path.line {
 }
 
 .d3-slider-vertical {
-  
   .d3-slider-handle {
     right: -0.54em;
     left: initial;
@@ -786,17 +797,16 @@ path.line {
     border-radius: 0.6em;
     border-color: $clr2;
   }
-  
+
   @media only screen and (min-width: $bp_mobile) {
     .d3-slider-handle {
-      right: -0.40em;
+      right: -0.4em;
       width: 1em;
       height: 1em;
       margin-bottom: -0.5em;
       border-radius: 0.5em;
     }
   }
-
 }
 
 .d3-slider-axis {
@@ -875,8 +885,7 @@ path.line {
   stroke-width: 1;
 }
 
-
-// Legend 
+// Legend
 
 .legend {
   width: 250px;
@@ -908,7 +917,7 @@ path.line {
 .legend-item {
   display: table-row;
   height: 40px;
-  
+
   > * {
     display: table-cell;
     vertical-align: middle;
@@ -938,7 +947,7 @@ path.line {
   font-size: 12px;
   width: 120px;
   border: 1px solid $clr1;
-  background-color: $clr1;  
+  background-color: $clr1;
   opacity: 0;
   padding: $blh/2;
   cursor: pointer;
@@ -948,22 +957,19 @@ path.line {
 }
 
 #itineraries .tooltip {
-  transform: translate (0,100px);
+  transform: translate (0, 100px);
   z-index: 10;
 }
-
-
 
 @keyframes tooltip {
   0% {
     opacity: 0;
   }
-  
+
   100% {
     opacity: 0.9;
   }
 }
-
 
 // Search
 
@@ -971,7 +977,7 @@ path.line {
   width: 62.5%;
   margin: 0 auto;
   padding-top: $blh;
-  
+
   input {
     width: 100%;
     height: $blh * 2;
@@ -983,25 +989,25 @@ path.line {
 
 #search-results {
   margin-top: $blh;
-  
+
   .search-result {
     padding-bottom: $blh;
     width: 650px;
   }
-  
+
   .term {
     @include author-list-item;
     padding-bottom: 0;
   }
-  
+
   .subhead {
     text-transform: none;
     font-size: 0.8em;
     color: $darker_neutral;
     font-weight: $regular;
-    padding-bottom: $blh/4
+    padding-bottom: $blh/4;
   }
-  
+
   .description {
     font-size: 0.8em;
     color: $black;
