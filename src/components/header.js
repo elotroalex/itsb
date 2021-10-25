@@ -7,14 +7,14 @@ import "./header.css";
 const Header = ({ siteTitle }) => (
   <div className="title">
     <Link to="/">
-      <figure>
+      <figure className="menu-icon">
         <img
           className="logo"
           src={itsbIcon}
           alt="ITSB Icon: A concentric circle."
         />
       </figure>
-      <span>{siteTitle}</span>
+      <span className="menu-title">{siteTitle}</span>
     </Link>
   </div>
 );

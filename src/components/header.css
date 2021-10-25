@@ -1,9 +1,34 @@
-.logo {
-  width: 1rem;
-  float: left;
-}
-
 .title {
   height: 60px;
   background: #fcb040;
+}
+
+.title a {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  color: black;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.menu-icon {
+  width: 10%;
+  margin: 0;
+}
+
+.title a .menu-icon {
+  padding: 0.8rem 1rem;
+}
+
+.menu-title {
+  width: 80%;
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.title a .menu-title {
+  padding: 1rem 0;
 }
