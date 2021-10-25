@@ -32,12 +32,11 @@ nav .main-menu {
 }
 
 .menu-icon {
-  width: 10%;
+  width: 24px;
   margin: 0;
 }
 
 .menu-title {
-  width: 80%;
   margin: 0;
   font-size: 1.2rem;
 }
@@ -47,5 +46,5 @@ nav .main-menu {
 }
 
 .main-menu a .menu-title {
-  padding: 0.8rem 1rem;
+  padding: 0.6rem 1rem;
 }

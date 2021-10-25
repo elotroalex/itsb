@@ -27,4 +27,6 @@ body {
 .content {
   background: lightgray;
   width: 75%;
+  padding: 3.6rem;
+  max-width: 900px;
 }
