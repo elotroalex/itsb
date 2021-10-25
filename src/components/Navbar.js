@@ -21,7 +21,7 @@ export default function Navbar() {
         <div className="navbar">
           <Header siteTitle={data.site.siteMetadata.title} />
           <nav className="navigation" style={{ paddingBottom: "2rem" }}>
-            <div className="links">
+            <div className="main-menu">
               <Link to="/">
                 {" "}
                 <figure className="menu-icon">
