@@ -4,6 +4,10 @@ import "./navbar.css";
 import Header from "./header";
 import { StaticQuery, graphql } from "gatsby";
 import itsbIcon from "../images/itsb_icon.svg";
+import homeIcon from "../images/home.svg";
+import pageIcon from "../images/page.svg";
+import vizIcon from "../images/visualization.svg";
+import searchIcon from "../images/search.svg";
 
 export default function Navbar() {
   return (
@@ -27,7 +31,7 @@ export default function Navbar() {
                 <figure className="menu-icon">
                   <img
                     className="logo"
-                    src={itsbIcon}
+                    src={homeIcon}
                     alt="ITSB Icon: A concentric circle."
                   />
                 </figure>
@@ -38,7 +42,7 @@ export default function Navbar() {
                 <figure className="menu-icon">
                   <img
                     className="logo"
-                    src={itsbIcon}
+                    src={pageIcon}
                     alt="ITSB Icon: A concentric circle."
                   />
                 </figure>
@@ -49,7 +53,7 @@ export default function Navbar() {
                 <figure className="menu-icon">
                   <img
                     className="logo"
-                    src={itsbIcon}
+                    src={vizIcon}
                     alt="ITSB Icon: A concentric circle."
                   />
                 </figure>
@@ -60,7 +64,7 @@ export default function Navbar() {
                 <figure className="menu-icon">
                   <img
                     className="logo"
-                    src={itsbIcon}
+                    src={vizIcon}
                     alt="ITSB Icon: A concentric circle."
                   />
                 </figure>
@@ -71,7 +75,7 @@ export default function Navbar() {
                 <figure className="menu-icon">
                   <img
                     className="logo"
-                    src={itsbIcon}
+                    src={searchIcon}
                     alt="ITSB Icon: A concentric circle."
                   />
                 </figure>
@@ -82,7 +86,7 @@ export default function Navbar() {
                 <figure className="menu-icon">
                   <img
                     className="logo"
-                    src={itsbIcon}
+                    src={pageIcon}
                     alt="ITSB Icon: A concentric circle."
                   />
                 </figure>
